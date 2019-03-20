@@ -5,6 +5,8 @@ nnoremap <Leader>h :bn<CR>
 nnoremap <Leader>l :bp<CR>
 nnoremap <Leader>q :bd<CR>
 
+nnoremap <Leader>t :nohlsearch<CR>
+set ic " case insensitive
 imap jj <esc>
 
 " FZF 
