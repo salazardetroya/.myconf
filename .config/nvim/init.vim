@@ -31,12 +31,16 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-let g:ycm_python_binary_path ='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-let g:ycm_server_python_interpreter = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7'
-let g:ycm_path_to_python_interpreter='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
+let s:host_vimrc = $HOME . '/.' . hostname() . '.init.vim'                                                                                                                               
+if filereadable(s:host_vimrc)                                                                                                                                                        
+  execute 'source ' . s:host_vimrc                                                                                                                                                   
+endif
 
-let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-let g:python2_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
+"let g:ycm_python_binary_path ='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
+"let g:ycm_server_python_interpreter = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7'
+"let g:ycm_path_to_python_interpreter='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
+"let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
+"let g:python2_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
 " vim-airline config
 " Leave the status line available for other plugins
@@ -93,7 +97,6 @@ call plug#begin('~/.local/share/nvim/plugged/')
 
 
  Plug 'christoomey/vim-tmux-navigator'
- Plug 'Shougo/denite.nvim'
  Plug 'Valloric/YouCompleteMe'
  " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
