@@ -12,6 +12,9 @@ imap jj <esc>
 
 " FZF 
 nnoremap <C-p> :Files<Cr>
+nnoremap <Leader>o :Lines<Cr>
+nnoremap <Leader>p :History<Cr>
+"let g:semshi#excluded_hl_groups = ['unresolved']
 
 "let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/libclang.so'
 "let g:chromatica#enable_at_startup=1
@@ -95,7 +98,6 @@ call plug#begin('~/.local/share/nvim/plugged/')
 ""Plug 'bbchung/Clamp'
 ""Plug 'octol/vim-cpp-enhanced-highlight'
 
-
  Plug 'christoomey/vim-tmux-navigator'
  Plug 'Valloric/YouCompleteMe'
  " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
@@ -112,12 +114,9 @@ call plug#begin('~/.local/share/nvim/plugged/')
  Plug 'majutsushi/tagbar'
  " Track the engine.
 Plug 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
-
 Plug 'joshdick/onedark.vim'
-
 Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
@@ -153,3 +152,4 @@ let g:tmuxline_theme = 'powerline'
 let g:airline#extensions#tmuxline#enabled = 0
 syntax on
 colorscheme onedark
+
