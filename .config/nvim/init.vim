@@ -39,11 +39,6 @@ if filereadable(s:host_vimrc)
   execute 'source ' . s:host_vimrc                                                                                                                                                   
 endif
 
-"let g:ycm_python_binary_path ='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:ycm_server_python_interpreter = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7'
-"let g:ycm_path_to_python_interpreter='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:python2_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
 " vim-airline config
 " Leave the status line available for other plugins
