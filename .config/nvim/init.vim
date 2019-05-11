@@ -1,28 +1,33 @@
 " Rebind <Leader> key
 let mapleader = " "
 " Map keys for the buffers
-nnoremap <Leader>h :bn<CR>
-nnoremap <Leader>l :bp<CR>
+nnoremap <Leader>h :bp<CR>
+nnoremap <Leader>l :bn<CR>
 nnoremap <Leader>q :bd<CR>
+
+" Ignore these files for the tab autocomplete
+set wildignore=*.pyc,*aux
 
 set ic " case insensitive
 nnoremap <Leader>t :set hlsearch!<CR>
 
+set cursorline " highlight current line
+
+filetype plugin indent on
+
+" highlight last inserted text
+nnoremap gV `[v`]
+
+
 imap jj <esc>
 
 " FZF 
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :GFiles<Cr>
 nnoremap <Leader>o :Lines<Cr>
 nnoremap <Leader>p :History<Cr>
+nnoremap <Leader>[ :Buffers<Cr>
 "let g:semshi#excluded_hl_groups = ['unresolved']
 
-"let g:chromatica#libclang_path='/usr/lib/llvm-6.0/lib/libclang.so'
-"let g:chromatica#enable_at_startup=1
-"let g:clamp_libclang_file='/usr/lib/llvm-6.0/lib/libclang.so'
-"let g:clamp_highlight_mode = 1
-"let g:cpp_member_variable_highlight = 1
-"let g:cpp_class_decl_highlight = 1
-"let g:cpp_class_scope_highlight = 1
 " Automatic reloading of init.vim
 autocmd! bufwritepost ~/.config/nvim/init.vim source %
 
@@ -38,12 +43,6 @@ let s:host_vimrc = $HOME . '/.' . hostname() . '.init.vim'
 if filereadable(s:host_vimrc)                                                                                                                                                        
   execute 'source ' . s:host_vimrc                                                                                                                                                   
 endif
-
-"let g:ycm_python_binary_path ='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:ycm_server_python_interpreter = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7'
-"let g:ycm_path_to_python_interpreter='/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.6/bin/python3'
-"let g:python2_host_prog = '/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python'
 
 " vim-airline config
 " Leave the status line available for other plugins
@@ -87,7 +86,7 @@ nmap <C-o> :TagbarToggle<CR>
 set number  " show line numbers
 set relativenumber 
 set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
+set wrap 
 set fo-=t   " don't automatically wrap text when typing
 highlight ColorColumn ctermbg=233
 
@@ -116,8 +115,22 @@ call plug#begin('~/.local/share/nvim/plugged/')
 Plug 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plug 'honza/vim-snippets'
+
+
 Plug 'joshdick/onedark.vim'
 Plug 'edkolev/tmuxline.vim'
+
+Plug 'mileszs/ack.vim'
+
+Plug 'rhysd/vim-grammarous'
+
+
+Plug 'sjl/gundo.vim'
+
+" Personal finances
+Plug 'nathangrigg/vim-beancount'
+
+Plug 'chrisbra/csv.vim'
 
 call plug#end()
 
@@ -153,3 +166,54 @@ let g:airline#extensions#tmuxline#enabled = 0
 syntax on
 colorscheme onedark
 
+" Personal finances, ideally it should only work for .beancount
+nnoremap <C-x><C-d> :r! date "+\%Y-\%m-\%d"<Cr>
+
+nmap <Leader><Leader>w <Plug>(easymotion-w)
+nmap <Leader><Leader>s <Plug>(easymotion-bd-w)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+" For the highligh during search
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+" toggle gundo
+nnoremap <Leader>u :GundoToggle<CR>
+
+" Language specific settings
+augroup configgroup
+    autocmd!
+    autocmd VimEnter * highlight clear SignColumn
+    autocmd BufWritePre *.php,*.py,*.js,*.txt,*.hs,*.java,*.md :call <SID>StripTrailingWhitespaces()
+    autocmd FileType python setlocal commentstring=#\ %s
+    autocmd BufEnter Makefile setlocal noexpandtab
+    autocmd BufEnter *.sh setlocal tabstop=2
+    autocmd BufEnter *.sh setlocal shiftwidth=2
+    autocmd BufEnter *.sh setlocal softtabstop=2
+augroup END
+
+" strips trailing whitespace at the end of files. this
+" is called on buffer write in the autogroup above.
+function! <SID>StripTrailingWhitespaces()
+    " save last search & cursor position
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" Activate html tags
+runtime macros/matchit.vim
