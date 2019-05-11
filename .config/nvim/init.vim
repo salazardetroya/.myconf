@@ -142,7 +142,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-let g:airline_theme='luna'
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -163,6 +162,7 @@ endif
 let g:tmuxline_preset = 'tmux'
 let g:tmuxline_theme = 'powerline'
 let g:airline#extensions#tmuxline#enabled = 0
+let g:airline_theme='kalisi'
 syntax on
 colorscheme onedark
 
