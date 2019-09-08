@@ -93,12 +93,9 @@ highlight ColorColumn ctermbg=233
 
 
 call plug#begin('~/.local/share/nvim/plugged/')
-""Plug 'arakashic/chromatica.nvim'
-""Plug 'bbchung/Clamp'
-""Plug 'octol/vim-cpp-enhanced-highlight'
-
  Plug 'christoomey/vim-tmux-navigator'
- Plug 'Valloric/YouCompleteMe'
+ " Use release branch
+ Plug 'neoclide/coc.nvim', {'branch': 'release'}
  " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
