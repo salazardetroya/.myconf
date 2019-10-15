@@ -8,7 +8,7 @@ nnoremap <Leader>q :bd<CR>
 " Ignore these files for the tab autocomplete
 set wildignore=*.pyc,*aux
 
-set ic " case insensitive
+set noic " case insensitive
 nnoremap <Leader>t :set hlsearch!<CR>
 
 set cursorline " highlight current line
@@ -98,7 +98,6 @@ call plug#begin('~/.local/share/nvim/plugged/')
 ""Plug 'octol/vim-cpp-enhanced-highlight'
 
  Plug 'christoomey/vim-tmux-navigator'
- Plug 'Valloric/YouCompleteMe'
  " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
@@ -124,13 +123,20 @@ Plug 'mileszs/ack.vim'
 
 Plug 'rhysd/vim-grammarous'
 
+" Coc.nvim. Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Visualize your undo tree
 Plug 'sjl/gundo.vim'
+
+Plug 'vimwiki/vimwiki'
 
 " Personal finances
 Plug 'nathangrigg/vim-beancount'
 
 Plug 'chrisbra/csv.vim'
+
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 call plug#end()
 
@@ -162,7 +168,7 @@ endif
 let g:tmuxline_preset = 'tmux'
 let g:tmuxline_theme = 'powerline'
 let g:airline#extensions#tmuxline#enabled = 0
-let g:airline_theme='kalisi'
+let g:airline_theme='bubblegum'
 syntax on
 colorscheme onedark
 
@@ -177,16 +183,6 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-
-"python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 " toggle gundo
 nnoremap <Leader>u :GundoToggle<CR>
@@ -217,3 +213,38 @@ endfunction
 
 " Activate html tags
 runtime macros/matchit.vim
+
+" By default, no TeX code embedded within markdown would be rendered. This option uses MathJax and launches the node server as
+let g:instant_markdown_mathjax = 1
+
+" coc config from github page
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-v> coc#refresh()
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+let $NVIM_COC_LOG_LEVEL = 'debug'
