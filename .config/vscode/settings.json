@@ -1,5 +1,4 @@
 {
-    //"editor.fontFamily": "Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
     "vim.easymotion": true,
     "vim.leader": " ",
@@ -84,5 +83,41 @@
     },
     "vsicons.dontShowNewVersionMessage": true,
     "git.ignoreMissingGitWarning": true,
-    "path-intellisense.absolutePathToWorkspace": false
+    "path-intellisense.absolutePathToWorkspace": false,
+     "terminal.integrated.fontFamily": "monospace",
+     "terminal.integrated.fontSize": 14,
+     "workbench.colorTheme": "Material Theme Darker",
+     "workbench.colorCustomizations": {
+         "activityBarBadge.background": "#64FFDA",
+         "activityBar.activeBorder": "#64FFDA",
+         "list.activeSelectionForeground": "#64FFDA",
+         "list.inactiveSelectionForeground": "#64FFDA",
+         "list.highlightForeground": "#64FFDA",
+         "scrollbarSlider.activeBackground": "#64FFDA50",
+         "editorSuggestWidget.highlightForeground": "#64FFDA",
+         "textLink.foreground": "#64FFDA",
+         "progressBar.background": "#64FFDA",
+         "pickerGroup.foreground": "#64FFDA",
+         "tab.activeBorder": "#64FFDA",
+         "notificationLink.foreground": "#64FFDA",
+         "editorWidget.resizeBorder": "#64FFDA",
+         "editorWidget.border": "#64FFDA",
+         "settings.modifiedItemIndicator": "#64FFDA",
+         "settings.headerForeground": "#64FFDA",
+         "panelTitle.activeBorder": "#64FFDA",
+         "breadcrumb.activeSelectionForeground": "#64FFDA",
+         "menu.selectionForeground": "#64FFDA",
+         "menubar.selectionForeground": "#64FFDA",
+         "editor.findMatchBorder": "#64FFDA",
+         "selection.background": "#64FFDA40"
+     },
+     "materialTheme.accent": "Bright Teal",
+     "cSpell.enableFiletypes": [
+         "!cpp",
+         "!json",
+         "!python"
+     ],
+     "editor.minimap.enabled": false,
+     "[python]": {
+         "editor.defaultFormatter": "ms-python.python"
 }
