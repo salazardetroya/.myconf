@@ -1,1 +1,88 @@
-/Users/salazardetro1/Library/Application Support/Code/User/settings.json
+{
+    //"editor.fontFamily": "Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "vim.easymotion": true,
+    "vim.leader": " ",
+    "vim.easymotionMarkerFontSize": "20",
+    "vim.easymotionMarkerFontFamily": "Monaco, 'Courier New', monospace",
+    "vim.easymotionMarkerYOffset": 1,
+    "emmet.triggerExpansionOnTab": true,
+    "zenMode.hideLineNumbers": false,
+    "editor.tabCompletion": "on",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "q"
+            ],
+            "commands": [
+                ":tabclose"
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "h"
+            ],
+            "commands": [
+                ":tabprevious"
+            ],
+        },
+        {
+            "before": [
+                "<leader>",
+                "l"
+            ],
+            "commands": [
+                ":tabnext"
+            ]
+        }
+    ],
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "editor.lineNumbers": "relative",
+    "window.zoomLevel": 1,
+    "python.formatting.provider": "black",
+    "editor.formatOnSave": true,
+    "latex-workshop.view.pdf.viewer": "external",
+    "editor.lineHeight": 0,
+    "editor.fontLigatures": true,
+    "cSpell.userWords": [
+        "Fr\\'echet",
+        "Riesz",
+        "discretization",
+        "discretize",
+        "discretized",
+        "functionals",
+        "linearize",
+        "premultiply",
+        "unregularized"
+    ],
+    "latex-workshop.message.latexlog.exclude": [
+        "Font",
+    ],
+    "latex-workshop.view.pdf.external.viewer.command": "evince",
+    "files.exclude": {
+        "**/*.aux": true,
+        "**/*.bbl": true,
+        "**/*.blg": true,
+        "**/*.fdb_latexmk": true,
+        "**/*.fls": true,
+        "**/*.synctex.gz": true
+    },
+    "vsicons.dontShowNewVersionMessage": true,
+    "git.ignoreMissingGitWarning": true,
+    "path-intellisense.absolutePathToWorkspace": false
+}
