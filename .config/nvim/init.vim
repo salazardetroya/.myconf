@@ -246,3 +246,6 @@ endfunction
 
 
 let $NVIM_COC_LOG_LEVEL = 'debug'
+
+
+highlight Comment cterm=italic
