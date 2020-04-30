@@ -99,6 +99,7 @@ call plug#begin('~/.local/share/nvim/plugged/')
  " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
  Plug 'junegunn/fzf.vim'
+ Plug 'junegunn/vim-easy-align'
  Plug 'terryma/vim-multiple-cursors'
  Plug 'vim-airline/vim-airline'
  Plug 'easymotion/vim-easymotion'
